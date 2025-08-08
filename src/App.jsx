@@ -56,7 +56,7 @@ function App() {
 }
 
 async function getKoordinate(imeKraja) {
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${imeKraja}&limit=5&appid=${API_KEY}`;
+  const url = `https://api.openweathermap.org/geo/1.0/direct?q=${imeKraja}&limit=5&appid=${API_KEY}`;
   try {
     const res = await fetch(url);
     const koordinate = await res.json();
