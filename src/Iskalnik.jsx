@@ -6,7 +6,7 @@ function Iskalnik({ onIskanjeSubmit, onGetLocation }) {
                 <button type="submit" id="submit-btn" className="siva-obroba">Išči</button>
             </form>
             <button type="button" onClick={onGetLocation} id="lokacija-gumb" className="siva-obroba" title="Izberi trenutno lokacijo">
-                <img src="/lokacija-ikona.svg"></img>
+                <img src="./lokacija-ikona.svg"></img>
             </button>
         </header>
     );

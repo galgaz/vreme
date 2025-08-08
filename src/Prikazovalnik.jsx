@@ -36,7 +36,7 @@ function Prikazovalnik({ vremenskiPodatki }) {
                         <h3>{vremenskiPodatki.main.grnd_level} hPa</h3>
                     </div>
                     <div className="pravokotnik">
-                        <img src="/veter-puscica.svg" style={{
+                        <img src="./veter-puscica.svg" style={{
                             transform: `rotate(${vremenskiPodatki.wind.deg}deg)`,
                             color: "white"
                         }}></img>
