@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --glavna: #80b6f0;
+    --druga: #3674B5;
+    --tretja: #b2d7fe;
+    --obroba: rgb(223, 237, 250);
+    --radius: 30px;
+}
+*{
+    font-family: 'Roboto';
+}
+html, body, #root{
+    margin: 0;
+    height: 100%;
+}
+#root{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 18px;
+    background-color: var(--glavna);
+}
+h1{
+    font-size: 40px;
+    font-weight: 800;
+}
+h2{
+    font-size: 36px;
+    font-weight: 800;
+}
+
+/* ISKALNIK */
+#iskalnik{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-grow: 0;
+    height: 40px;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--druga);
+
+    button{
+        background-color: var(--tretja);
+    }
+    button:hover{
+        background-color: #9dc0e5;
+        cursor: pointer;
+    }
+}
+#iskanje-form{
+    display: flex;
+}
+#inputLokacija{
+    font-size: 16px;
+    border-right: none;
+    outline: none;
+    border-radius:  var(--radius) 0 0  var(--radius);
+    width: 180px;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-left: 30px;
+    background-color: var(--obroba);
+    background-image: url(/iskanje-ikona.svg);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px;
+}
+#submit-btn{
+    font-size: 16px;
+    border-radius: 0  var(--radius)  var(--radius) 0;
+    border-left: none;
+    padding: 0 10px;
+}
+#lokacija-gumb{
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.siva-obroba{
+    border: 2px solid var(--obroba);
+}
+
+/* PRIKAZOVALNIK */
+#prikazovalnik{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    gap: 20px;
+    margin: 30px 0;
+}
+#imeKraja{
+    margin: 0;
+}
+.ikonaTempContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+.tempContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 120px;
+    h1, h2, h3, h4{
+        margin: 0px;
+    }
+}
+#vremeIkona{
+    height: 120px;
+    width: auto;
+}
+#opisVremena{
+    font-size: 20px;
+    font-weight: 500;
+}
+.ostaleInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+.pravokotnik{
+    background-color: var(--druga);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    height: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    *{
+        margin: 0px;
+    }
+    h3{
+        font-size: 25px;
+    }
+}
+
+/* SPODAJ */
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    font-size: 15px;
+    padding: 7px;
+    a{
+        color: black;
+    }
+    p{
+        margin: 0;
+    }
+}
+
+
+/* MOBILNA VERIZJA */
+@media only screen and (max-width: 600px){
+    .ostaleInfo{
+        justify-content: space-evenly;
+        gap: 10px;
+    }
+}
