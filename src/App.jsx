@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { utcIntToLocalTime } from './utcToLocalTime.jsx'
 import Prikazovalnik from "./Prikazovalnik.jsx"
 import Iskalnik from "./Iskalnik.jsx"
 import Spodaj from "./Spodaj.jsx"
@@ -19,8 +20,7 @@ function App() {
     setVreme(novoVreme);
   }
 
-  const [userLocation, setUserLocation] = useState(null);
-  function getUserLocation() {
+  function getVremeUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
@@ -44,11 +44,11 @@ function App() {
   
   let cas = 0;
   if(Object.keys(vreme).length != 0){
-    cas = UTCToLocalTime(vreme.dt);
+    cas = utcIntToLocalTime(vreme.stanje.dt);
   }
   return (
     <>
-      <Iskalnik onIskanjeSubmit={handleSubmit} onGetLocation={getUserLocation} />
+      <Iskalnik onIskanjeSubmit={handleSubmit} onGetLocation={getVremeUserLocation} />
       <Prikazovalnik vremenskiPodatki={vreme} />
       <Spodaj casPridobitve={cas}/>
     </>
@@ -71,26 +71,31 @@ async function getKoordinate(imeKraja) {
 }
 
 async function getVreme(koordinate) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${koordinate.lat}&lon=${koordinate.lon}&appid=${API_KEY}&units=metric&lang=sl`;
+  const urlStanje = `https://api.openweathermap.org/data/2.5/weather?lat=${koordinate.lat}&lon=${koordinate.lon}&appid=${API_KEY}&units=metric&lang=sl`;
+  const urlNapoved = `https://api.openweathermap.org/data/2.5/forecast?lat=${koordinate.lat}&lon=${koordinate.lon}&appid=${API_KEY}&units=metric&lang=sl`;
   try {
-    const res = await fetch(url);
-    const novoVreme = await res.json();
+    const res = await fetch(urlStanje);
+    const novoStanje = await res.json();
     // console.log(novoVreme);
-    return novoVreme;
+    // return novoVreme;
+    try {
+      const res = await fetch(urlNapoved);
+      const novaNapoved = await res.json();
+
+      const podatki = {
+        stanje: novoStanje,
+        napoved: novaNapoved
+      };
+      console.log(podatki);
+      return podatki;
+
+    } catch (err) {
+      console.error(err);
+    }
+
   } catch (err) {
     console.error(err);
   }
-}
-
-function UTCToLocalTime(UTCTime){
-    const podatkiCasUTC = new Date(UTCTime * 1000);
-    const formatter = new Intl.DateTimeFormat('en-GB', {
-        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        hour: '2-digit',
-        minute: '2-digit',
-    });
-    const podatkiCasString = formatter.format(podatkiCasUTC);
-    return podatkiCasString;
 }
 
 export default App;
