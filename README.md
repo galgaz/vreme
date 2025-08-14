@@ -3,4 +3,4 @@ Spletna aplikacija za prikazovanje vremenskih podatkov iz OpenWeatherMap, nareje
 
 [https://galgaz.github.io/vreme/](https://galgaz.github.io/vreme/)
 
-![](./screenshot.png)
+![](./screenshot.png?)
