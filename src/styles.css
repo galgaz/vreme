@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-    --glavna: #80b6f0;
-    --druga: #3674B5;
-    --tretja: #b2d7fe;
+    --ozadje: #80b6f0;
+    --temna: #3674B5;
+    --svetla: #b2d7fe;
+    --vmes: #518ed0;
     --obroba: rgb(223, 237, 250);
     --radius: 30px;
 }
@@ -20,7 +21,7 @@ html, body, #root{
     justify-content: space-between;
     text-align: center;
     font-size: 18px;
-    background-color: var(--glavna);
+    background-color: var(--ozadje);
 }
 h1{
     font-size: 40px;
@@ -41,10 +42,10 @@ h2{
     height: 40px;
     gap: 10px;
     padding: 10px;
-    background-color: var(--druga);
+    background-color: var(--temna);
 
     button{
-        background-color: var(--tretja);
+        background-color: var(--svetla);
     }
     button:hover{
         background-color: #9dc0e5;
@@ -144,7 +145,7 @@ h2{
     gap: 20px;
 }
 .pravokotnik{
-    background-color: var(--druga);
+    background-color: var(--temna);
     color: white;
     display: flex;
     flex-direction: column;
@@ -178,7 +179,7 @@ h2{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        background-color: var(--druga);
+        /* background-color: var(--temna); */
         color: white;
         float: none;
         min-width: 160px;
@@ -200,6 +201,12 @@ h2{
                 width: auto;
             }
         }
+    }
+    .napoved-dan-0{
+        background-color: var(--vmes);
+    }
+    .napoved-dan-1{
+        background-color: var(--temna);
     }
 }
 

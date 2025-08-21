@@ -1,4 +1,4 @@
-import {utcStrToLocalTime} from "./utcToLocalTime.jsx";
+import {utcStrToLocalTime, utcStrToLocalDay} from "./utcToLocalTime.jsx";
 
 export default function Napoved({napovedPodatki}){
     return(
@@ -8,7 +8,7 @@ export default function Napoved({napovedPodatki}){
                 {
                 napovedPodatki.list.map(function(item, i){
                     return (
-                        <li key={i}>
+                        <li key={i} className={"napoved-dan-" + parseInt(utcStrToLocalDay(item.dt_txt))%2}>
                             <p>
                                 <strong>{utcStrToLocalTime(item.dt_txt)}</strong>
                             </p>

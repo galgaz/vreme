@@ -36,3 +36,25 @@ export function utcStrToLocalTime(UTCTime){
     const podatkiCasString = formatter.format(podatkiCasUTC);
     return podatkiCasString;
 }
+
+export function utcStrToLocalDay(UTCTime){
+    if(typeof UTCTime !== 'string' || UTCTime.trim() === ''){
+      throw new Error("Invalid UTC string");
+    }
+
+    const isoString = UTCTime.trim().replace(' ', 'T');
+    
+    const podatkiCasUTC = new Date(isoString);
+
+    if (isNaN(podatkiCasUTC.getTime())) {
+        throw new Error("Invalid date format");
+    }
+
+    const formatter = new Intl.DateTimeFormat('sl-SI', {
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        day: 'numeric'
+    });
+    
+    const podatkiCasString = formatter.format(podatkiCasUTC);
+    return podatkiCasString;
+}
